@@ -111,10 +111,9 @@ export const ContentPage = () => {
   //   });
   // }
 
-  const showTable =
-    Array.isArray(userData?.results) && userData?.results.length > 0;
-
+  const showTable = Array.isArray(userData?.results) && userData?.results.length > 0;   
   const showLoader = isLoading && userData?.results.length === 0;
+  const showButton = Array.isArray(userData?.results) && userData?.results.length === 10;
 
   return (
     <>
@@ -208,7 +207,7 @@ export const ContentPage = () => {
             >
               &#60;
             </button>
-            <button
+          {showButton && <button
               type="button"
               onClick={handleRightArrowClick}
               style={{
@@ -219,7 +218,7 @@ export const ContentPage = () => {
               }}
             >
               &#62;
-            </button>
+            </button>}
           </div>
 
           <button
