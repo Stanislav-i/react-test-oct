@@ -67,15 +67,15 @@ const dataSlice = createSlice({
         state.error = action.payload;
       })
       // ======ADD CONTACT
-      .addCase(addDataThunk.pending, (state) => {
+      // .addCase(addDataThunk.pending, (state) => {
 
-      })
-      .addCase(addDataThunk.fulfilled, (state, action) => {
-        state.data.push(action.payload);
-      })
-      .addCase(addDataThunk.rejected, (state, action) => {
-        state.error = action.payload;
-      })
+      // })
+      // .addCase(addDataThunk.fulfilled, (state, action) => {
+      //   state.data.push(action.payload);
+      // })
+      // .addCase(addDataThunk.rejected, (state, action) => {
+      //   state.error = action.payload;
+      // })
 });
 
 export const selectUserData = state => state.data.data;
