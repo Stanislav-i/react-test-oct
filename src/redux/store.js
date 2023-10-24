@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
-//   persistReducer,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -9,21 +9,22 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+import storage from 'redux-persist/lib/storage';
 import { authReducer } from './authReducer';
 import { dataReducer } from './dataReducer';
+import { editReducer } from './editDataReducer';
 
-
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-// };
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+};
 
 export const store = configureStore({
   reducer: {
-    // auth: persistReducer(authPersistConfig, authReducer),
-    auth: authReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
+    // auth: authReducer,
     data: dataReducer,
+    edit: editReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

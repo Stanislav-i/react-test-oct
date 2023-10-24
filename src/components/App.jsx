@@ -10,17 +10,16 @@ export const App = () => {
   return (
     <div
       style={{
-        // height: '100vh',
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         fontSize: 'small',
-        // color: '#010101',
-
-        // display: 'flex',
-        // flexDirection: 'column',
-        // gap: '10px',
-        // padding: '1rem',
+        color: '#010101',
+        backgroundColor: '#a49d9d',
+        flexDirection: 'column',
+        gap: '10px',
+        padding: '1rem',
       }}
     >
       {/* <Header /> */}

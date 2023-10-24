@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const $instance = axios.create({
-    baseURL: 'http://146.190.118.121/api',
+    baseURL: 'https://technical-task-api.icapgroupgmbh.com/api',
   });
 
 export const loginUserThunk = createAsyncThunk(
@@ -11,8 +11,9 @@ export const loginUserThunk = createAsyncThunk(
       try {
         const { status } = await $instance.post('/login/', userData);
         return status;
-      } catch (error) {
-        return thunkApi.rejectWithValue(error.message);
+      } catch (response) {
+        const errorMessage = response.response.data.error;
+        return thunkApi.rejectWithValue(errorMessage);
       }
     }
   );  
@@ -20,12 +21,17 @@ export const loginUserThunk = createAsyncThunk(
 const initialState = {
   isLoading: false,
   error: null,
-  authentificated: true, //change this
+  authentificated: false, 
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    logOut: (state)=>{
+      state.authentificated = false;
+    },
+  },
   extraReducers: builder =>
     builder
       // ---LOGIN---
@@ -46,5 +52,7 @@ const authSlice = createSlice({
 });
 
 export const selectAuthentificated = state => state.auth.authentificated;
+export const selectLoginError = state => state.auth.error;
+export const {logOut} =authSlice.actions; 
 
 export const authReducer = authSlice.reducer;
